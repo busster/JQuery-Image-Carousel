@@ -65,6 +65,10 @@
 
 .slide-left {
   opacity: 0;
+  transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+
   cursor: pointer;
   left: 0;
   width: calc(var(--max-width)/2);
@@ -111,6 +115,10 @@
 }
 .slide-right {
   opacity: 0;
+  transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+
   cursor: pointer;
   right: 0;
   width: calc(var(--max-width)/2);
@@ -149,13 +157,6 @@
 }
 .slide-left:hover {
   opacity: 1; 
-}
-.transition {
-  -o-transition:1s;
-  -ms-transition:1s;
-  -moz-transition:1s;
-  -webkit-transition:1s;
-  transition:1s;
 }
 img {
   height: 100%;

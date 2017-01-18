@@ -46,32 +46,46 @@ function checkImageSize() {
   var windowHeight = $(window).height() * 0.75;
   var windowAR = windowWidth / windowHeight;
 
-  // console.log(windowAR)
+  console.log(windowAR)
   // console.log(windowWidth + " " + windowHeight)
 
   var imageCont = $('.image-cont')[imageIndex]
   var image = $(imageCont).find('img')
+
+  console.log(imageIndex)
+  console.log(imageCont)
+  // image.load(function() {
+  //   console.log('loaded')
+  // })
+  console.log('width below')
   var imageWidth = $(image).width()
   var imageHeight = $(image).height()
   var imageAR = imageWidth / imageHeight;
 
   // console.log(imageAR)
-  // console.log(imageWidth + " " + imageHeight)
+  console.log(imageWidth)
+  console.log(imageWidth + " " + imageHeight)
 
   var percentage = windowAR / imageAR;
 
-  console.log(percentage)
+  // console.log(imageHeight)
+  // console.log(percentage)
+  // debugger
 
   if (percentage < 1) {
+    // $(image).css('height', imageHeight)
     $(image).css('width', '100%')
     $(image).css('height', 'auto')
-    $('.carousel-height').css('height', imageHeight)
   } else {
     $(image).css('width', 'auto')
     $(image).css('height', '100%')
-    $('.carousel-height').css('height', 'calc(var(--height) * 0.75)')
   }
 
+  if (percentage < 1) {
+    $('.carousel-height').css('height', image.height())
+  } else {
+    $('.carousel-height').css('height', 'calc(var(--height) * 0.75)')
+  }
 
 
 }
@@ -116,10 +130,10 @@ function createCarousel(imageUrls) {
   }
   carouselString += `
       <div class="carousel-container">
-        <div class="carousel-height transition slide-left">
+        <div class="carousel-height slide-left">
           <div class="circle-arrow-left"></div>
         </div>
-        <div class="carousel-height transition slide-right">
+        <div class="carousel-height slide-right">
           <div class="circle-arrow-right"></div>
         </div>
         <div class="carousel-height carousel">
@@ -135,17 +149,21 @@ function createCarousel(imageUrls) {
   while (div.children.length > 0) {
     $('.plugin-carousel').append(div.children[0]);
   }
+
+  setTimeout(function(){
+    checkImageSize()
+  },1);
 }
 
-createCarousel(imageUrls);
 
+createCarousel(imageUrls);
 
 
 var carousel = $('.carousel')
 var maxImageIndex = carousel.children().length - 1
 var imageIndex = 0
 
-checkImageSize()
+// checkImageSize()
 
 function carouselAspectRatio() {
   var imageCont = $('.image-cont')[imageIndex]
@@ -202,6 +220,7 @@ $('.slide-left').on('click', function() {
   }
   activateImage()
   carousel.css('margin-left', (imageIndex * -100) + '%')
+  checkImageSize()
 })
 $('.slide-right').on('click', function() {
   deactivateImage()
@@ -211,6 +230,7 @@ $('.slide-right').on('click', function() {
   }
   activateImage()
   carousel.css('margin-left', (imageIndex * -100) + '%')
+  checkImageSize()
 })
 
 
@@ -220,6 +240,7 @@ $('.image-preview').on('click', '.preview-cont', function() {
   imageIndex = $(this).index()
   activateImage()
   carousel.css('margin-left', (imageIndex * -100) + '%')
+  checkImageSize()
 })
 
 
@@ -247,6 +268,7 @@ $('.image-preview').on('click', '.preview-cont', function() {
 //   });
 // })
 
+
 $(window).resize(function(){
   setCarouselAspectRatio()
 
@@ -256,6 +278,8 @@ $(window).resize(function(){
 
 
 });
+
+
 
 // $(window).resize(function(){
 //   var ar = carouselAspectRatio()
