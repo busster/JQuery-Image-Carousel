@@ -8,6 +8,7 @@
 
 // TEST IMAGES
 var imageUrls = [
+  "https://images3.alphacoders.com/853/thumb-1920-85305.jpg",
   "http://marshall.org/wp-content/themes/marshall/img/featured-space-policy.jpg", 
   "http://www.mrwallpaper.com/wallpapers/space-stars-road.jpg", 
   "https://newevolutiondesigns.com/images/freebies/space-wallpaper-29.jpg", 
@@ -24,6 +25,15 @@ var imageUrls = [
 ]
 // TEST IMAGES
 
+var mobile = false;
+
+if (/Mobi/.test(navigator.userAgent)) {
+  mobile = true;
+}
+
+
+
+
 
 function setCarouselAspectRatio() {
   var windowWidth = $(window).width();
@@ -34,11 +44,9 @@ function setCarouselAspectRatio() {
     var carouselHeight = windowHeight;
     document.documentElement.style.setProperty('--height', carouselHeight + "px");
   }
-
-  // console.log(windowWidth)
-  // console.log(windowHeight)
-  // console.log("***********")
 }
+
+
 
 function checkImageSize() {
 
@@ -46,25 +54,25 @@ function checkImageSize() {
   var windowHeight = $(window).height() * 0.75;
   var windowAR = windowWidth / windowHeight;
 
-  console.log(windowAR)
+  // console.log(windowAR)
   // console.log(windowWidth + " " + windowHeight)
 
   var imageCont = $('.image-cont')[imageIndex]
   var image = $(imageCont).find('img')
 
-  console.log(imageIndex)
-  console.log(imageCont)
-  // image.load(function() {
+  // console.log(imageIndex)
+  // console.log(imageCont)
+  // image.on('load', function() {
   //   console.log('loaded')
   // })
-  console.log('width below')
+  // console.log('width below')
   var imageWidth = $(image).width()
   var imageHeight = $(image).height()
   var imageAR = imageWidth / imageHeight;
 
   // console.log(imageAR)
-  console.log(imageWidth)
-  console.log(imageWidth + " " + imageHeight)
+  // console.log(imageWidth)
+  // console.log(imageWidth + " " + imageHeight)
 
   var percentage = windowAR / imageAR;
 
@@ -83,13 +91,25 @@ function checkImageSize() {
 
   if (percentage < 1) {
     $('.carousel-height').css('height', image.height())
+    if (mobile) {
+      document.documentElement.style.setProperty('--height', windowHeight + "px");
+    } else {
+      var previewHeight = image.height() * 0.25;
+      document.documentElement.style.setProperty('--height', image.height() + previewHeight + "px");
+    }
+    $('.image-preview').css('padding', 0)
+    $('.preview-cont').css('margin', 0)
+
   } else {
     $('.carousel-height').css('height', 'calc(var(--height) * 0.75)')
+    if (!mobile){
+      $('.image-preview').css('padding', 'calc(2 * (var(--height) * 0.01))')
+      $('.preview-cont').css('margin', 'calc(var(--height) * 0.005)')
+    }
   }
 
 
 }
-
 
 
 
@@ -150,9 +170,19 @@ function createCarousel(imageUrls) {
     $('.plugin-carousel').append(div.children[0]);
   }
 
-  setTimeout(function(){
+
+
+  // SIZE INITIAL IMAGE
+  var imageCont = $('.image-cont')[0]
+  var initImage = $(imageCont).find('img')
+
+  initImage.on('load', function() {
     checkImageSize()
-  },1);
+  })
+  // SIZE INITIAL IMAGE
+
+
+
 }
 
 
