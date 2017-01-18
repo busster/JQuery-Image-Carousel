@@ -17,39 +17,39 @@
   /*height: var(--height);*/
   /*background-color: red;*/
 }
+.carousel-height {
+  height: calc(var(--height) * 0.75);
+}
 .carousel {
   margin-left: 0;
-  height: var(--height);
+  /*height: calc(var(--height) * 0.75);*/
   width: calc(var(--max-width) * var(--picture_number));
   /*background-color: black;*/
 }
 .image-cont {
   text-align: center;
-  height: var(--height);
+  /*height: calc(var(--height) * 0.75);*/
   float: left;
   /*width: var(--max-width);*/
   width: calc(var(--max-width) / var(--picture_number));
 }
 
 .image-preview {
-  /*overflow: scroll;*/
-  /*position: relative;*/
-  /*border: 1px solid red;*/
   box-sizing: border-box;
   padding: calc(2 * (var(--height) * 0.01));
-  margin-bottom: calc(2 * (var(--height) * 0.01));
-  /*width: calc(((var(--height) * 0.2) + (2 * (var(--height) * 0.01))) * var(--picture_number));*/
-      width: 100%;
-    overflow-x:scroll;
-    overflow-y:hidden;
-    white-space: nowrap;
-  height: calc((var(--height) * 0.2) + (2 * (var(--height) * 0.005)));
+  width: 100%;
+  overflow-x:scroll;
+  overflow-y:hidden;
+  white-space: nowrap;
+  height: calc(var(--height) * 0.25);
 }
 .preview-cont {
   background-color: black;
   cursor: pointer;
   overflow: hidden;
   margin: calc(var(--height) * 0.005);
+  margin-top: 0;
+  margin-bottom: 0;
   /*float: left;*/
   display:inline-block;
   /*white-space: nowrap;*/
@@ -68,7 +68,7 @@
   cursor: pointer;
   left: 0;
   width: calc(var(--max-width)/2);
-  height: var(--height);
+  /*height: calc(var(--height) * 0.75);*/
   position: absolute;
   background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,.25));
   /*background-color: green;*/
@@ -87,7 +87,8 @@
 .circle-arrow-left {
   float: left;
   margin-left: calc(var(--height) * 0.05);
-  margin-top: calc((var(--height) * 0.5) - calc(var(--arrow_size) * 2));
+  top: 50%;
+  margin-top: calc(-2 * var(--arrow_size));
   width: calc(var(--arrow_size) * 4);
   height: 0;
   padding-bottom: calc(var(--arrow_size) * 4);
@@ -113,7 +114,7 @@
   cursor: pointer;
   right: 0;
   width: calc(var(--max-width)/2);
-  height: var(--height);
+  /*height: calc(var(--height) * 0.75);*/
   position: absolute;
   background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,.25));
   /*background-color: yellow;*/
@@ -121,7 +122,8 @@
 .circle-arrow-right {
   float: right;
   margin-right: calc(var(--height) * 0.05);
-  margin-top: calc((var(--height) * 0.5) - calc(var(--arrow_size) * 2));
+  top: 50%;
+  margin-top: calc(-2 * var(--arrow_size));
   width: calc(var(--arrow_size) * 4);
   height: 0;
   padding-bottom: calc(var(--arrow_size) * 4);

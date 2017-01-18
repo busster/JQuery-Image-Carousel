@@ -25,7 +25,64 @@ var imageUrls = [
 // TEST IMAGES
 
 
+function setCarouselAspectRatio() {
+  var windowWidth = $(window).width();
+  var windowHeight = $(window).height();
+  var windowAR = windowWidth / windowHeight;
+
+  if (windowAR <= 3) {
+    var carouselHeight = windowHeight;
+    document.documentElement.style.setProperty('--height', carouselHeight + "px");
+  }
+
+  // console.log(windowWidth)
+  // console.log(windowHeight)
+  // console.log("***********")
+}
+
+function checkImageSize() {
+
+  var windowWidth = $(window).width();
+  var windowHeight = $(window).height() * 0.75;
+  var windowAR = windowWidth / windowHeight;
+
+  // console.log(windowAR)
+  // console.log(windowWidth + " " + windowHeight)
+
+  var imageCont = $('.image-cont')[imageIndex]
+  var image = $(imageCont).find('img')
+  var imageWidth = $(image).width()
+  var imageHeight = $(image).height()
+  var imageAR = imageWidth / imageHeight;
+
+  // console.log(imageAR)
+  // console.log(imageWidth + " " + imageHeight)
+
+  var percentage = windowAR / imageAR;
+
+  console.log(percentage)
+
+  if (percentage < 1) {
+    $(image).css('width', '100%')
+    $(image).css('height', 'auto')
+    $('.carousel-height').css('height', imageHeight)
+  } else {
+    $(image).css('width', 'auto')
+    $(image).css('height', '100%')
+    $('.carousel-height').css('height', 'calc(var(--height) * 0.75)')
+  }
+
+
+
+}
+
+
+
+
+
+
 function createCarousel(imageUrls) {
+  setCarouselAspectRatio();
   document.documentElement.style.setProperty('--picture_number', imageUrls.length);
   var carouselString = ''
   var imageList = ''
@@ -35,7 +92,7 @@ function createCarousel(imageUrls) {
   for (var i = 0; i <= imageUrls.length - 1; i++) {
     if (i === 0) {
       imageList += `
-          <div class="image-cont">
+          <div class="carousel-height image-cont">
             <img class="active" src="${imageUrls[i]}">
           </div>
         `
@@ -46,7 +103,7 @@ function createCarousel(imageUrls) {
         `
     } else {
       imageList += `
-          <div class="image-cont">
+          <div class="carousel-height image-cont">
             <img class="in-active" data-src="${imageUrls[i]}">
           </div>
         `
@@ -59,13 +116,13 @@ function createCarousel(imageUrls) {
   }
   carouselString += `
       <div class="carousel-container">
-        <div class="transition slide-left">
+        <div class="carousel-height transition slide-left">
           <div class="circle-arrow-left"></div>
         </div>
-        <div class="transition slide-right">
+        <div class="carousel-height transition slide-right">
           <div class="circle-arrow-right"></div>
         </div>
-        <div class="carousel">
+        <div class="carousel-height carousel">
           ${imageList}
         </div>
         <div class="image-preview">
@@ -76,7 +133,6 @@ function createCarousel(imageUrls) {
   var div = document.createElement('div');
   div.innerHTML = carouselString;
   while (div.children.length > 0) {
-    console.log($('.plugin-carousel'))
     $('.plugin-carousel').append(div.children[0]);
   }
 }
@@ -84,11 +140,12 @@ function createCarousel(imageUrls) {
 createCarousel(imageUrls);
 
 
+
 var carousel = $('.carousel')
 var maxImageIndex = carousel.children().length - 1
 var imageIndex = 0
 
-
+checkImageSize()
 
 function carouselAspectRatio() {
   var imageCont = $('.image-cont')[imageIndex]
@@ -190,26 +247,34 @@ $('.image-preview').on('click', '.preview-cont', function() {
 //   });
 // })
 
-
-
 $(window).resize(function(){
-  var ar = carouselAspectRatio()
-  var iar = imageAspectRatio()
-  var percentage = (ar/iar)
-  if (percentage < 1) {
-    var imageCont = $('.image-cont')[imageIndex]
-    var image = $(imageCont).find('img')
-    $(image).css('width', '100%')
-    $(image).css('height', 'auto')
-  }
-  if (percentage >= 1) {
-    var imageCont = $('.image-cont')[imageIndex]
-    var image = $(imageCont).find('img')
-    $(image).css('width', 'auto')
-    $(image).css('height', '100%')
-  }
-  // console.log(ar + " " + iar)
-  // console.log("percentage: " + (ar/iar))
+  setCarouselAspectRatio()
+
+  checkImageSize()
+
+
+
+
 });
+
+// $(window).resize(function(){
+//   var ar = carouselAspectRatio()
+//   var iar = imageAspectRatio()
+//   var percentage = (ar/iar)
+//   if (percentage < 1) {
+//     var imageCont = $('.image-cont')[imageIndex]
+//     var image = $(imageCont).find('img')
+//     $(image).css('width', '100%')
+//     $(image).css('height', 'auto')
+//   }
+//   if (percentage >= 1) {
+//     var imageCont = $('.image-cont')[imageIndex]
+//     var image = $(imageCont).find('img')
+//     $(image).css('width', 'auto')
+//     $(image).css('height', '100%')
+//   }
+//   // console.log(ar + " " + iar)
+//   // console.log("percentage: " + (ar/iar))
+// });
 
 
