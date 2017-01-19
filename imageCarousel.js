@@ -282,34 +282,15 @@ function checkImageSize() {
   var windowHeight = $(window).height() * 0.75;
   var windowAR = windowWidth / windowHeight;
 
-  // console.log(windowAR)
-  // console.log(windowWidth + " " + windowHeight)
-
   var imageCont = $('.image-cont')[imageIndex]
   var image = $(imageCont).find('img')
-
-  // console.log(imageIndex)
-  // console.log(imageCont)
-  // image.on('load', function() {
-  //   console.log('loaded')
-  // })
-  // console.log('width below')
   var imageWidth = $(image).width()
   var imageHeight = $(image).height()
   var imageAR = imageWidth / imageHeight;
 
-  // console.log(imageAR)
-  // console.log(imageWidth)
-  // console.log(imageWidth + " " + imageHeight)
-
   var percentage = windowAR / imageAR;
 
-  // console.log(imageHeight)
-  // console.log(percentage)
-  // debugger
-
   if (percentage < 1) {
-    // $(image).css('height', imageHeight)
     $(image).css('width', '100%')
     $(image).css('height', 'auto')
   } else {
@@ -421,8 +402,6 @@ var carousel = $('.carousel')
 var maxImageIndex = carousel.children().length - 1
 var imageIndex = 0
 
-// checkImageSize()
-
 function carouselAspectRatio() {
   var imageCont = $('.image-cont')[imageIndex]
   var height = $(imageCont).height()
@@ -532,31 +511,4 @@ $(window).resize(function(){
 
   checkImageSize()
 
-
-
-
 });
-
-
-
-// $(window).resize(function(){
-//   var ar = carouselAspectRatio()
-//   var iar = imageAspectRatio()
-//   var percentage = (ar/iar)
-//   if (percentage < 1) {
-//     var imageCont = $('.image-cont')[imageIndex]
-//     var image = $(imageCont).find('img')
-//     $(image).css('width', '100%')
-//     $(image).css('height', 'auto')
-//   }
-//   if (percentage >= 1) {
-//     var imageCont = $('.image-cont')[imageIndex]
-//     var image = $(imageCont).find('img')
-//     $(image).css('width', 'auto')
-//     $(image).css('height', '100%')
-//   }
-//   // console.log(ar + " " + iar)
-//   // console.log("percentage: " + (ar/iar))
-// });
-
-
