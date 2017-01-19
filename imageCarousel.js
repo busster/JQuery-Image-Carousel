@@ -1,3 +1,32 @@
+// IMAGE URLS
+var imageUrls = [
+  "https://static.pexels.com/photos/126590/pexels-photo-126590.jpeg",
+  "https://static.pexels.com/photos/87646/horsehead-nebula-dark-nebula-constellation-orion-87646.jpeg",
+  "https://static.pexels.com/photos/250072/pexels-photo-250072.jpeg",
+  "https://static.pexels.com/photos/2156/sky-earth-space-working.jpg",
+  "https://static.pexels.com/photos/6546/sky-night-space-trees.jpeg",
+  "https://static.pexels.com/photos/2773/city-skyline-skyscrapers-top.jpg",
+  "https://static.pexels.com/photos/625/field-summer-sun-meadow.jpg",
+  "https://static.pexels.com/photos/1780/landscape-nature-clouds-cloudy.jpg",
+  "https://static.pexels.com/photos/28221/pexels-photo-28221.jpg",
+  "https://static.pexels.com/photos/105221/pexels-photo-105221.jpeg",
+  "https://static.pexels.com/photos/54278/pexels-photo-54278.jpeg",
+  "https://static.pexels.com/photos/8703/sky-space-moon-outdoors.jpg",
+  "https://static.pexels.com/photos/25943/pexels-photo-25943.jpg",
+  "https://static.pexels.com/photos/36764/marguerite-daisy-beautiful-beauty.jpg",
+  "https://static.pexels.com/photos/1440/city-road-street-buildings.jpg",
+  "https://static.pexels.com/photos/24491/pexels-photo-24491.jpg",
+  "https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg",
+  "https://static.pexels.com/photos/14676/pexels-photo-14676.png",
+  "https://static.pexels.com/photos/6603/landmark-bridge-cliff-california.jpeg",
+  "https://static.pexels.com/photos/33045/lion-wild-africa-african.jpg"
+]
+// IMAGE URLS
+
+// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
+
 // CSS RULES
 var sheet = (function() {
   // Create the <style> tag
@@ -230,26 +259,6 @@ sheet.insertRule(`@media only screen and (max-device-width: 480px) {
 }`,0)
 // CSS RULES
 
-
-// TEST IMAGES
-var imageUrls = [
-  "https://images3.alphacoders.com/853/thumb-1920-85305.jpg",
-  "http://marshall.org/wp-content/themes/marshall/img/featured-space-policy.jpg", 
-  "http://www.mrwallpaper.com/wallpapers/space-stars-road.jpg", 
-  "https://newevolutiondesigns.com/images/freebies/space-wallpaper-29.jpg", 
-  "http://entropymag.org/wp-content/uploads/2014/10/outer-space-wallpaper-pictures.jpg", 
-  "https://wallpaperscraft.com/image/planet_light_spots_space_86643_1920x1080.jpg", 
-  "http://space-facts.com/wp-content/uploads/magellanic-clouds.png", 
-  "http://www.isro.gov.in/sites/default/files/galleries/Gallery/28takeoff.jpg", 
-  "http://hdwallpapershdpics.com/wp-content/uploads/2015/08/free_high_resolution_images_for_download-1.jpg", 
-  "http://7606-presscdn-0-74.pagely.netdna-cdn.com/wp-content/uploads/2016/03/Dubai-Photos-Images-Travel-Tourist-Images-Pictures-800x600.jpg", 
-  "http://www.w3schools.com/css/trolltunga.jpg", 
-  "http://assets.barcroftmedia.com.s3-website-eu-west-1.amazonaws.com/assets/images/recent-images-11.jpg", 
-  "http://7606-presscdn-0-74.pagely.netdna-cdn.com/wp-content/uploads/2016/03/Dubai-Photos-Images-Oicture-Dubai-Landmarks-800x600.jpg", 
-  "http://www.freedigitalphotos.net/images/img/homepage/87357.jpg"
-]
-// TEST IMAGES
-
 var mobile = false;
 
 if (/Mobi/.test(navigator.userAgent)) {
@@ -276,34 +285,15 @@ function checkImageSize() {
   var windowHeight = $(window).height() * 0.75;
   var windowAR = windowWidth / windowHeight;
 
-  // console.log(windowAR)
-  // console.log(windowWidth + " " + windowHeight)
-
   var imageCont = $('.image-cont')[imageIndex]
   var image = $(imageCont).find('img')
-
-  // console.log(imageIndex)
-  // console.log(imageCont)
-  // image.on('load', function() {
-  //   console.log('loaded')
-  // })
-  // console.log('width below')
   var imageWidth = $(image).width()
   var imageHeight = $(image).height()
   var imageAR = imageWidth / imageHeight;
 
-  // console.log(imageAR)
-  // console.log(imageWidth)
-  // console.log(imageWidth + " " + imageHeight)
-
   var percentage = windowAR / imageAR;
 
-  // console.log(imageHeight)
-  // console.log(percentage)
-  // debugger
-
   if (percentage < 1) {
-    // $(image).css('height', imageHeight)
     $(image).css('width', '100%')
     $(image).css('height', 'auto')
   } else {
@@ -415,8 +405,6 @@ var carousel = $('.carousel')
 var maxImageIndex = carousel.children().length - 1
 var imageIndex = 0
 
-// checkImageSize()
-
 function carouselAspectRatio() {
   var imageCont = $('.image-cont')[imageIndex]
   var height = $(imageCont).height()
@@ -526,31 +514,4 @@ $(window).resize(function(){
 
   checkImageSize()
 
-
-
-
 });
-
-
-
-// $(window).resize(function(){
-//   var ar = carouselAspectRatio()
-//   var iar = imageAspectRatio()
-//   var percentage = (ar/iar)
-//   if (percentage < 1) {
-//     var imageCont = $('.image-cont')[imageIndex]
-//     var image = $(imageCont).find('img')
-//     $(image).css('width', '100%')
-//     $(image).css('height', 'auto')
-//   }
-//   if (percentage >= 1) {
-//     var imageCont = $('.image-cont')[imageIndex]
-//     var image = $(imageCont).find('img')
-//     $(image).css('width', 'auto')
-//     $(image).css('height', '100%')
-//   }
-//   // console.log(ar + " " + iar)
-//   // console.log("percentage: " + (ar/iar))
-// });
-
-
