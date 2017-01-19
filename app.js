@@ -202,7 +202,7 @@ var ruleConstructor = [
 ]
 
 ruleConstructor.forEach(function(r) {
-  addCSSRule(document.styleSheets[0], r.name, r.rule, 1);
+  addCSSRule(document.styleSheets[0], r.name, r.rule, 0);
 })
 sheet.insertRule(`@media only screen and (max-device-width: 480px) {
   .carousel {
