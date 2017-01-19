@@ -5,6 +5,7 @@ This is a javascript plugin that will place an image carousel into the DOM.
 ## Dependencies
 You will need to include the JQuery library
 Just add this script tag to your project:
+
 `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>`
 
 ## Usage
