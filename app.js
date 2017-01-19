@@ -1,10 +1,235 @@
-// var img = $('.first').find('img')
+// CSS RULES
+var sheet = (function() {
+  // Create the <style> tag
+  var style = document.createElement("style");
 
-// img.on('click', function(){
-//   var next = $('.next').find('img')
-//   next[0].src = next.data('src')
-//   // console.log(next[0].src)
-// })
+  // WebKit hack :(
+  style.appendChild(document.createTextNode(""));
+
+  // Add the <style> element to the page
+  document.head.appendChild(style);
+
+  return style.sheet;
+})();
+
+function addCSSRule(sheet, selector, rules, index) {
+  if("insertRule" in sheet) {
+    sheet.insertRule(selector + "{" + rules + "}", index);
+  }
+  else if("addRule" in sheet) {
+    sheet.addRule(selector, rules, index);
+  }
+}
+
+
+
+var inactivePreviewHoverRule = 
+`opacity: 1;`
+var inactivePreviewRule = 
+`-o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+  opacity: .5;
+`
+var inactiveRule = 
+`visibility: hidden;`
+var activePreviewRule = 
+`opacity: 1;`
+var activeRule = 
+`visibility: visible;`
+var carImgRule = 
+`height: 100%;`
+var slideLeftHoverRule = 
+`opacity: 1;`
+var slideRightHoverRule = 
+`opacity: 1;`
+var circleArrowRightBeforeRule = 
+`content: '';
+  display: block;
+  border-top: solid var(--arrow_size) transparent;
+  border-left: solid var(--arrow_size) rgba(255,255,255,1);
+  border-bottom: solid var(--arrow_size) transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: calc(var(--arrow_size) * -1) 0 0 -3px;
+`
+var circleArrowRightRule = 
+`float: right;
+  margin-right: calc(var(--height) * 0.05);
+  top: 50%;
+  margin-top: calc(-2 * var(--arrow_size));
+  width: calc(var(--arrow_size) * 4);
+  height: 0;
+  padding-bottom: calc(var(--arrow_size) * 4);
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  position: relative;
+  border: 2px solid rgba(255,255,255,1);
+`
+var slideRightRule = 
+`opacity: 0;
+  transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  cursor: pointer;
+  right: 0;
+  width: calc(var(--max-width)/2);
+  position: absolute;
+  background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,.25));
+`
+var circleArrowLeftBeforeRule = 
+`content: '';
+  display: block;
+  border-top: solid var(--arrow_size) transparent;
+  border-right: solid var(--arrow_size) rgba(255,255,255,1);
+  border-bottom: solid var(--arrow_size) transparent;
+  position: absolute;
+  top: 50%;
+  right: 42.5%;
+  margin: calc(var(--arrow_size) * -1) 0 0 -3px;
+`
+var circleArrowLeftRule = 
+`float: left;
+  margin-left: calc(var(--height) * 0.05);
+  top: 50%;
+  margin-top: calc(-2 * var(--arrow_size));
+  width: calc(var(--arrow_size) * 4);
+  height: 0;
+  padding-bottom: calc(var(--arrow_size) * 4);
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  position: relative;
+  border: 2px solid rgba(255,255,255,1);
+`
+var arrowLeftRule = 
+`float: left;
+  margin-left: calc(var(--height) * 0.05);
+  margin-top: calc((var(--height) * 0.5) - var(--arrow_size));
+  width: 0; 
+  height: 0; 
+  border-top: var(--arrow_size) solid transparent;
+  border-bottom: var(--arrow_size) solid transparent; 
+  border-right:var(--arrow_size) solid rgba(255,255,255,.5);
+`
+var slideLeftRule = 
+`opacity: 0;
+  transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  cursor: pointer;
+  left: 0;
+  width: calc(var(--max-width)/2);
+  position: absolute;
+  background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,.25));
+`
+var previewContRule = 
+`background-color: black;
+  cursor: pointer;
+  overflow: hidden;
+  margin: calc(var(--height) * 0.01);
+  margin-top: 0;
+  margin-bottom: 0;
+  display:inline-block;
+  height: calc(var(--height) * 0.2);
+  width: calc(var(--height) * 0.2);
+`
+var imagePreviewRule = 
+`box-sizing: border-box;
+  padding: calc(2 * (var(--height) * 0.01));
+  padding-top: 0;
+  width: 100%;
+  overflow-x:scroll;
+  overflow-y:hidden;
+  white-space: nowrap;
+  height: calc(var(--height) * 0.25);
+  font-size: 0;
+`
+var imageContRule = 
+`text-align: center;
+  float: left;
+  width: calc(var(--max-width) / var(--picture_number));
+`
+var carouselRule = 
+`margin-left: 0;
+  width: calc(var(--max-width) * var(--picture_number));
+`
+var carouselHeightRule = 
+`height: calc(var(--height) * 0.75);`
+var carouselContainerRule = 
+`margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  width: var(--max-width);
+`
+var rootRule =   
+`--height: 600px;
+  --width: 1200px;
+  --max-width: 100%;
+  --padding: 50px;
+  --picture_number: 1;
+  --arrow_size: 15px;`;
+
+
+var ruleConstructor = [
+  {name:".in-active-preview:hover",rule:inactivePreviewHoverRule},
+  {name:".in-active-preview:hover",rule:inactivePreviewHoverRule},
+  {name:".in-active-preview",rule:inactivePreviewRule},
+  {name:".in-active",rule:inactiveRule},
+  {name:".active-preview",rule:activePreviewRule},
+  {name:".active",rule:activeRule},
+  {name:".car-img",rule:carImgRule},
+  {name:".slide-left:hover",rule:slideLeftHoverRule},
+  {name:".slide-right:hover",rule:slideRightHoverRule},
+  {name:".circle-arrow-right:before",rule:circleArrowRightBeforeRule},
+  {name:".circle-arrow-right",rule:circleArrowRightRule},
+  {name:".slide-right",rule:slideRightRule},
+  {name:".circle-arrow-left:before",rule:circleArrowLeftBeforeRule},
+  {name:".circle-arrow-left",rule:circleArrowLeftRule},
+  {name:".arrow-left",rule:arrowLeftRule},
+  {name:".slide-left",rule:slideLeftRule},
+  {name:".preview-cont",rule:previewContRule},
+  {name:".image-preview",rule:imagePreviewRule},
+  {name:".image-cont",rule:imageContRule},
+  {name:".carousel",rule:carouselRule},
+  {name:".carousel-height",rule:carouselHeightRule},
+  {name:".carousel-container", rule:carouselContainerRule},
+  {name:":root", rule:rootRule}
+]
+
+ruleConstructor.forEach(function(r) {
+  addCSSRule(document.styleSheets[0], r.name, r.rule, 1);
+})
+sheet.insertRule(`@media only screen and (max-device-width: 480px) {
+  .carousel {
+    background-color: rgba(0,0,0,0.5);
+  }
+  .slide-left, .slide-right {
+    opacity: 1;
+    background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,0));
+  }
+
+  .circle-arrow-right {
+    margin-right: calc(var(--height) * 0.001);
+    border: 2px solid rgba(255,255,255,0);
+  }
+  .circle-arrow-right:before {
+    border-left: solid var(--arrow_size) rgba(255,255,255,.25);
+  }
+  .circle-arrow-left {
+    margin-left: calc(var(--height) * 0.001);
+    border: 2px solid rgba(255,255,255,0);
+  }
+  .circle-arrow-left:before {
+    border-right: solid var(--arrow_size) rgba(255,255,255,.25);
+  }
+}`,0)
+// CSS RULES
+
 
 // TEST IMAGES
 var imageUrls = [
@@ -30,9 +255,6 @@ var mobile = false;
 if (/Mobi/.test(navigator.userAgent)) {
   mobile = true;
 }
-
-
-
 
 
 function setCarouselAspectRatio() {
@@ -127,7 +349,7 @@ function createCarousel(imageUrls) {
     if (i === 0) {
       imageList += `
           <div class="carousel-height image-cont">
-            <img class="active" src="${imageUrls[i]}">
+            <img class="active car-img" src="${imageUrls[i]}">
           </div>
         `
       imagePreviewList += `
@@ -138,7 +360,7 @@ function createCarousel(imageUrls) {
     } else {
       imageList += `
           <div class="carousel-height image-cont">
-            <img class="in-active" data-src="${imageUrls[i]}">
+            <img class="in-active car-img" data-src="${imageUrls[i]}">
           </div>
         `
       imagePreviewList += `

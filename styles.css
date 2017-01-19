@@ -1,39 +1,39 @@
-:root {
+/*:root {
   --height: 600px;
   --width: 1200px;
   --max-width: 100%;
   --padding: 50px;
   --picture_number: 1;
   --arrow_size: 15px;
-}
+}*/
 
-.carousel-container {
-  /*border: 1px solid red;*/
+/*.carousel-container {
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-  /*padding: var(--padding);*/
   width: var(--max-width);
+}*/
+  /*border: 1px solid red;*/
+  /*padding: var(--padding);*/
   /*height: var(--height);*/
   /*background-color: red;*/
-}
-.carousel-height {
+/*.carousel-height {
   height: calc(var(--height) * 0.75);
-}
-.carousel {
+}*/
+/*.carousel {
   margin-left: 0;
-  /*height: calc(var(--height) * 0.75);*/
   width: calc(var(--max-width) * var(--picture_number));
-}
-.image-cont {
-  text-align: center;
+}*/
   /*height: calc(var(--height) * 0.75);*/
+/*.image-cont {
+  text-align: center;
   float: left;
-  /*width: var(--max-width);*/
   width: calc(var(--max-width) / var(--picture_number));
-}
+}*/
+  /*height: calc(var(--height) * 0.75);*/
+  /*width: var(--max-width);*/
 
-.image-preview {
+/*.image-preview {
   box-sizing: border-box;
   padding: calc(2 * (var(--height) * 0.01));
   padding-top: 0;
@@ -43,20 +43,20 @@
   white-space: nowrap;
   height: calc(var(--height) * 0.25);
   font-size: 0;
-}
-.preview-cont {
+}*/
+/*.preview-cont {
   background-color: black;
   cursor: pointer;
   overflow: hidden;
   margin: calc(var(--height) * 0.01);
   margin-top: 0;
   margin-bottom: 0;
-  /*float: left;*/
   display:inline-block;
-  /*white-space: nowrap;*/
   height: calc(var(--height) * 0.2);
   width: calc(var(--height) * 0.2);
-}
+}*/
+  /*float: left;*/
+  /*white-space: nowrap;*/
 /*.preview-cont:last-child {
   margin-right: calc(var(--height) * 0.005);
 }*/
@@ -64,7 +64,7 @@
 
 
 
-.slide-left {
+/*.slide-left {
   opacity: 0;
   transition: opacity 1s;
   -moz-transition: opacity 1s;
@@ -73,12 +73,12 @@
   cursor: pointer;
   left: 0;
   width: calc(var(--max-width)/2);
-  /*height: calc(var(--height) * 0.75);*/
   position: absolute;
   background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,.25));
+}*/
+  /*height: calc(var(--height) * 0.75);*/
   /*background-color: green;*/
-}
-.arrow-left {
+/*.arrow-left {
   float: left;
   margin-left: calc(var(--height) * 0.05);
   margin-top: calc((var(--height) * 0.5) - var(--arrow_size));
@@ -88,8 +88,8 @@
   border-bottom: var(--arrow_size) solid transparent; 
   
   border-right:var(--arrow_size) solid rgba(255,255,255,.5); 
-}
-.circle-arrow-left {
+}*/
+/*.circle-arrow-left {
   float: left;
   margin-left: calc(var(--height) * 0.05);
   top: 50%;
@@ -102,8 +102,8 @@
   border-radius: 50%;
   position: relative;
   border: 2px solid rgba(255,255,255,1);
-}
-.circle-arrow-left:before {
+}*/
+/*.circle-arrow-left:before {
   content: '';
   display: block;
   border-top: solid var(--arrow_size) transparent;
@@ -113,22 +113,21 @@
   top: 50%;
   right: 42.5%;
   margin: calc(var(--arrow_size) * -1) 0 0 -3px;
-}
-.slide-right {
+}*/
+/*.slide-right {
   opacity: 0;
   transition: opacity 1s;
   -moz-transition: opacity 1s;
   -webkit-transition: opacity 1s;
-
   cursor: pointer;
   right: 0;
   width: calc(var(--max-width)/2);
-  /*height: calc(var(--height) * 0.75);*/
   position: absolute;
   background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,.25));
+}*/
+  /*height: calc(var(--height) * 0.75);*/
   /*background-color: yellow;*/
-}
-.circle-arrow-right {
+/*.circle-arrow-right {
   float: right;
   margin-right: calc(var(--height) * 0.05);
   top: 50%;
@@ -141,8 +140,8 @@
   border-radius: 50%;
   position: relative;
   border: 2px solid rgba(255,255,255,1);
-}
-.circle-arrow-right:before {
+}*/
+/*.circle-arrow-right:before {
   content: '';
   display: block;
   border-top: solid var(--arrow_size) transparent;
@@ -152,8 +151,8 @@
   top: 50%;
   left: 50%;
   margin: calc(var(--arrow_size) * -1) 0 0 -3px;
-}
-.slide-right:hover {
+}*/
+/*.slide-right:hover {
   opacity: 1;
 }
 .slide-left:hover {
@@ -161,9 +160,9 @@
 }
 img {
   height: 100%;
-}
+}*/
 
-.active {
+/*.active {
   visibility: visible;
 }
 .active-preview {
@@ -182,10 +181,10 @@ img {
 }
 .in-active-preview:hover {
   opacity: 1; 
-}
+}*/
 
 
-.test1 {
+/*.test1 {
   background-color: orange;
 }
 .test2 {
@@ -193,11 +192,11 @@ img {
 }
 .test3 {
   background-color: blue;
-}
+}*/
 
 
 
-@media only screen and (max-device-width: 480px) {
+/*@media only screen and (max-device-width: 480px) {
   .carousel {
     background-color: rgba(0,0,0,0.5);
   }
@@ -220,7 +219,7 @@ img {
   .circle-arrow-left:before {
     border-right: solid var(--arrow_size) rgba(255,255,255,.25);
   }
-}
+}*/
 
 
 
