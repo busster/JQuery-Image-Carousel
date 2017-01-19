@@ -1,3 +1,32 @@
+// IMAGE URLS
+var imageUrls = [
+  "https://static.pexels.com/photos/126590/pexels-photo-126590.jpeg",
+  "https://static.pexels.com/photos/87646/horsehead-nebula-dark-nebula-constellation-orion-87646.jpeg",
+  "https://static.pexels.com/photos/250072/pexels-photo-250072.jpeg",
+  "https://static.pexels.com/photos/2156/sky-earth-space-working.jpg",
+  "https://static.pexels.com/photos/6546/sky-night-space-trees.jpeg",
+  "https://static.pexels.com/photos/2773/city-skyline-skyscrapers-top.jpg",
+  "https://static.pexels.com/photos/625/field-summer-sun-meadow.jpg",
+  "https://static.pexels.com/photos/1780/landscape-nature-clouds-cloudy.jpg",
+  "https://static.pexels.com/photos/28221/pexels-photo-28221.jpg",
+  "https://static.pexels.com/photos/105221/pexels-photo-105221.jpeg",
+  "https://static.pexels.com/photos/54278/pexels-photo-54278.jpeg",
+  "https://static.pexels.com/photos/8703/sky-space-moon-outdoors.jpg",
+  "https://static.pexels.com/photos/25943/pexels-photo-25943.jpg",
+  "https://static.pexels.com/photos/36764/marguerite-daisy-beautiful-beauty.jpg",
+  "https://static.pexels.com/photos/1440/city-road-street-buildings.jpg",
+  "https://static.pexels.com/photos/24491/pexels-photo-24491.jpg",
+  "https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg",
+  "https://static.pexels.com/photos/14676/pexels-photo-14676.png",
+  "https://static.pexels.com/photos/6603/landmark-bridge-cliff-california.jpeg",
+  "https://static.pexels.com/photos/33045/lion-wild-africa-african.jpg"
+]
+// IMAGE URLS
+
+// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
+
 // CSS RULES
 var sheet = (function() {
   // Create the <style> tag
@@ -229,32 +258,6 @@ sheet.insertRule(`@media only screen and (max-device-width: 480px) {
   }
 }`,0)
 // CSS RULES
-
-
-// TEST IMAGES
-var imageUrls = [
-  "https://static.pexels.com/photos/126590/pexels-photo-126590.jpeg",
-  "https://static.pexels.com/photos/87646/horsehead-nebula-dark-nebula-constellation-orion-87646.jpeg",
-  "https://static.pexels.com/photos/250072/pexels-photo-250072.jpeg",
-  "https://static.pexels.com/photos/2156/sky-earth-space-working.jpg",
-  "https://static.pexels.com/photos/6546/sky-night-space-trees.jpeg",
-  "https://static.pexels.com/photos/2773/city-skyline-skyscrapers-top.jpg",
-  "https://static.pexels.com/photos/625/field-summer-sun-meadow.jpg",
-  "https://static.pexels.com/photos/1780/landscape-nature-clouds-cloudy.jpg",
-  "https://static.pexels.com/photos/28221/pexels-photo-28221.jpg",
-  "https://static.pexels.com/photos/105221/pexels-photo-105221.jpeg",
-  "https://static.pexels.com/photos/54278/pexels-photo-54278.jpeg",
-  "https://static.pexels.com/photos/8703/sky-space-moon-outdoors.jpg",
-  "https://static.pexels.com/photos/25943/pexels-photo-25943.jpg",
-  "https://static.pexels.com/photos/36764/marguerite-daisy-beautiful-beauty.jpg",
-  "https://static.pexels.com/photos/1440/city-road-street-buildings.jpg",
-  "https://static.pexels.com/photos/24491/pexels-photo-24491.jpg",
-  "https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg",
-  "https://static.pexels.com/photos/14676/pexels-photo-14676.png",
-  "https://static.pexels.com/photos/6603/landmark-bridge-cliff-california.jpeg",
-  "https://static.pexels.com/photos/33045/lion-wild-africa-african.jpg"
-]
-// TEST IMAGES
 
 var mobile = false;
 
