@@ -2,6 +2,10 @@
 
 This is a javascript plugin that will place an image carousel into the DOM. 
 
+Here is a demo of the plugin:
+
+http://www.jbusster.com/code_playgrounds/imagecarousel
+
 ## Dependencies
 You will need to include the JQuery library
 Just add this script tag to your project:
